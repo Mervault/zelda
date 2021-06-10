@@ -1,8 +1,29 @@
 #!/bin/sh
-
+#line to be commented
 set -e
 
+# run install to check / update node module required by the bot
 npm install
 export PATH="node_modules/.bin:node_modules/hubot/node_modules/.bin:$PATH"
 
+# required environnment variables for matrix connexion
+export HUBOT_MATRIX_HOST_SERVER=
+export HUBOT_MATRIX_USER=
+export HUBOT_MATRIX_PASSWORD=
+export HUBOT_LOG_LEVEL="debug"
+
+
+# required environment variables for proxy handling (module https-proxy-agent)
+#export http_proxy=
+#export HTTP_PROXY=
+#export https_proxy=
+#export HTTPS_PROXY=
+#export no_proxy=
+#export NO_PROXY=
+
+# required environment variables for room filtering (module hubot-slack-whitelist-middleware)
+export HUBOT_WHITELIST=
+
+
+# firing up the bot
 exec node_modules/.bin/hubot --name "Zelda" "$@"
